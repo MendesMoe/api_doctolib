@@ -3,6 +3,7 @@ package doctolib.com.api.controller;
 import doctolib.com.api.doctor.DataNewDoctor;
 import doctolib.com.api.doctor.Doctor;
 import doctolib.com.api.doctor.DoctorRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class DoctorController {
     private DoctorRepository repository;
     @PostMapping
     @Transactional
-    public void newDoctor(@RequestBody DataNewDoctor data) {
+    public void newDoctor(@RequestBody @Valid DataNewDoctor data) {
         repository.save(new Doctor(data));
     }
 }

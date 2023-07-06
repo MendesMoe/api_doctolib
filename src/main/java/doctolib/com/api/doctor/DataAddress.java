@@ -1,4 +1,16 @@
 package doctolib.com.api.doctor;
 
-public record DataAddress(String street, int zip_code, String city, String region, String number, String more) {
+import jakarta.validation.constraints.NotBlank;
+
+public record DataAddress(
+        @NotBlank
+        String street,
+        @NotBlank
+        int zip_code,
+        @NotBlank
+        String city,
+        @NotBlank
+        String region,
+        String number,
+        String more) {
 }

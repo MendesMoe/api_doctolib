@@ -1,4 +1,18 @@
 package doctolib.com.api.doctor;
 
-public record DataNewDoctor(String name, String mail, String code, Category category, DataAddress address) {
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record DataNewDoctor(
+        @NotBlank
+        String name,
+        @NotBlank
+        @Email
+        String mail,
+        @NotBlank
+        String code,
+        Category category,
+        @Valid DataAddress address) {
 }
