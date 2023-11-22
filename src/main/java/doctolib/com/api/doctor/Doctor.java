@@ -21,6 +21,7 @@ public class Doctor {
     private String mail;
     private String phone;
     private String code;
+    private Boolean status;
 
     @Enumerated(EnumType.STRING)
     private Category category;
@@ -31,6 +32,7 @@ public class Doctor {
     public Doctor(DataNewDoctor data) {
         this.name = data.name();
         this.code = data.code();
+        this.status = true;
         this.mail = data.mail();
         this.phone = data.phone();
         this.category = data.category();
@@ -47,5 +49,9 @@ public class Doctor {
         if (data.address() != null) {
             this.address.updateAddressInformations(data.address());
         }
+    }
+
+    public void setDisabled() {
+        this.status = false;
     }
 }
