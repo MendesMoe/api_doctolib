@@ -19,6 +19,7 @@ public class Doctor {
     private Long id;
     private String name;
     private String mail;
+    private String phone;
     private String code;
 
     @Enumerated(EnumType.STRING)
@@ -31,7 +32,20 @@ public class Doctor {
         this.name = data.name();
         this.code = data.code();
         this.mail = data.mail();
+        this.phone = data.phone();
         this.category = data.category();
         this.address = new Address(data.address());
+    }
+
+    public void updateInformations(DataUpdateDoctor data) {
+        if (data.name() != null) {
+            this.name = data.name();
+        }
+        if (data.phone() != null) {
+            this.phone = data.phone();
+        }
+        if (data.address() != null) {
+            this.address.updateAddressInformations(data.address());
+        }
     }
 }
