@@ -6,22 +6,24 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
+@Entity(name = "Doctor")
 @Table(name = "doctors")
-@Entity(name = "doctors")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Doctor {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String mail;
     private String code;
+
     @Enumerated(EnumType.STRING)
     private Category category;
+
     @Embedded
     private Address address;
 

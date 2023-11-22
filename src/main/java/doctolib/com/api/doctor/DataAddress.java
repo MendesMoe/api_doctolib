@@ -6,7 +6,7 @@ public record DataAddress(
         @NotBlank
         String street,
         @NotBlank
-        int zip_code,
+        String zip_code,
         @NotBlank
         String city,
         @NotBlank
