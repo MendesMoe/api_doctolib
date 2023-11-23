@@ -1,9 +1,9 @@
-package doctolib.com.api.doctor;
+package doctolib.com.api.domain.doctor;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 public record DataNewDoctor(
         @NotBlank
@@ -12,7 +12,11 @@ public record DataNewDoctor(
         @Email
         String mail,
         @NotBlank
+        String phone,
+        @NotBlank
+                @Pattern(regexp = "\\d{4,6}")
         String code,
+        String status,
         Category category,
         @Valid DataAddress address) {
 }
