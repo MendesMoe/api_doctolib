@@ -1,6 +1,9 @@
 package doctolib.com.api.controller;
 
-import doctolib.com.api.doctor.*;
+import doctolib.com.api.domain.doctor.*;
+import doctolib.com.api.domain.doctor.DataListDoctor;
+import doctolib.com.api.domain.doctor.Doctor;
+import doctolib.com.api.domain.doctor.DoctorRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -49,4 +52,10 @@ public class DoctorController {
         doctor.setDisabled();
         return ResponseEntity.noContent().build();
     }//codigo 204 quer dizer que a req foi processada e nao tem conteudo
+
+    @GetMapping("/{id}")
+    public ResponseEntity getDoctorById(@PathVariable Long id) {
+        var doctor = repository.getReferenceById(id); // se o metodo getReferenceById() nao acha, manda uma exception. poderia botar um try catch
+        return ResponseEntity.ok(new DataDetailsDoctor(doctor));
+    }
 }

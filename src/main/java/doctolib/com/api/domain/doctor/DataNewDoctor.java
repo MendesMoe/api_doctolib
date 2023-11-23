@@ -1,4 +1,4 @@
-package doctolib.com.api.doctor;
+package doctolib.com.api.domain.doctor;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;

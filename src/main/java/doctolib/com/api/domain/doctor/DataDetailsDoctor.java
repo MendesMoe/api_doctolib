@@ -1,6 +1,6 @@
-package doctolib.com.api.doctor;
+package doctolib.com.api.domain.doctor;
 
-import doctolib.com.api.address.Address;
+import doctolib.com.api.domain.address.Address;
 
 public record DataDetailsDoctor(Long id,
                                 String name,

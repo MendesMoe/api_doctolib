@@ -1,6 +1,6 @@
-package doctolib.com.api.address;
+package doctolib.com.api.domain.address;
 
-import doctolib.com.api.doctor.DataAddress;
+import doctolib.com.api.domain.doctor.DataAddress;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
