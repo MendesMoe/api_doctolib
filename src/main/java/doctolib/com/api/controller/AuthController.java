@@ -2,6 +2,8 @@ package doctolib.com.api.controller;
 
 import doctolib.com.api.domain.user.AuthService;
 import doctolib.com.api.domain.user.DataAuth;
+import doctolib.com.api.domain.user.User;
+import doctolib.com.api.infra.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +21,13 @@ public class AuthController {
     @Autowired
     private AuthenticationManager manager;
 
+    private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity login(@RequestBody @Valid DataAuth data) {
-
         var token = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = manager.authenticate(token);
-        return ResponseEntity.ok().build();
+        var authentication = manager.authenticate(token);
+        return ResponseEntity.ok(tokenService.newToken((User) authentication.getPrincipal()));
     }
 }
