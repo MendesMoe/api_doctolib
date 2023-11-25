@@ -4,11 +4,13 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import doctolib.com.api.domain.user.User;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
+@Service
 public class TokenService {
     public String newToken(User user) {
         try {
@@ -16,14 +18,14 @@ public class TokenService {
             return JWT.create()
                     .withIssuer("API doctolib")
                     .withSubject(user.getLogin())
-                    .withExpiresAt(dataExpiracao())
+                    .withExpiresAt(dateTimeExpiration())
                     .sign(algorithm);
         } catch (JWTCreationException exception){
             throw new RuntimeException("error during the generation a new token", exception);
         }
     }
 
-    private Instant dataExpiracao() {
+    private Instant dateTimeExpiration() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
 }
