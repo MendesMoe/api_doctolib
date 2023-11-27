@@ -20,7 +20,7 @@ public class TokenService {
 
     public String newToken(User user) {
         try {
-            var algorithm = Algorithm.HMAC256("123456");
+            var algorithm = Algorithm.HMAC256(secret);
             return JWT.create()
                     .withIssuer("API doctolib")
                     .withSubject(user.getLogin())
