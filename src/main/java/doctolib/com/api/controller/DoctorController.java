@@ -47,6 +47,7 @@ public class DoctorController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    //Se eu quiser que so um role "admin" possa acessar esta rota, como um midleware, eu posso usar a anotation @Secured("ROLE_ADMIN")
     public ResponseEntity dalete(@PathVariable Long id) { // para receber um parametro dinamico tem que usar pathvariable para dizer que vai ser uma variavel do path
         var doctor = repository.getReferenceById(id);
         doctor.setDisabled();
