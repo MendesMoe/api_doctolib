@@ -1,15 +1,13 @@
 package doctolib.com.api.controller;
 
 import doctolib.com.api.domain.consultation.ConsultationService;
+import doctolib.com.api.domain.consultation.DataCancelConsultation;
 import doctolib.com.api.domain.consultation.DataNewConsultation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("consultations")
@@ -31,6 +29,13 @@ public class ConsultationController {
         //
         //        System.out.println("newConsultation - data");
         //        System.out.println(data);
+    }
+
+    @DeleteMapping
+    @Transactional
+    public ResponseEntity cancelConsultation(@RequestBody @Valid DataCancelConsultation data) {
+        service.cancel(data);
+        return ResponseEntity.noContent().build();
     }
 
 }
