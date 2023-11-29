@@ -1,5 +1,6 @@
 package doctolib.com.api.domain.consultation;
 
+import doctolib.com.api.domain.doctor.Category;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 
@@ -13,5 +14,6 @@ public record DataNewConsultation(
 
         @NotNull
         @Future
-        LocalDateTime date) {
+        LocalDateTime date,
+        Category category) {
 }
